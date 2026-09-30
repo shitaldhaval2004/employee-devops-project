@@ -7,6 +7,7 @@ def home():
     return """
     <h1>Employee Management System</h1>
     <p>AWS DevOps Project 🚀</p>
+    <p>CI/CD Auto Deployment Working!</p>
     <p>Application is running successfully!</p>
     """
 
