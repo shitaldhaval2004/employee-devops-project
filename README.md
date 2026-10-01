@@ -1,344 +1,100 @@
-# 🚀 Employee Management System — AWS DevOps Project
+# Employee DevOps Project
 
-A hands-on DevOps project demonstrating containerization, cloud deployment, CI/CD automation, reverse proxy configuration, and infrastructure monitoring using AWS and open-source DevOps tools.
+## Overview
 
----
+A containerized Employee Management application demonstrating
+application development, Docker containerization, and CI automation
+using GitHub Actions.
 
-## 📌 Project Overview
+## Tech Stack
 
-The **Employee Management System** is a Python Flask web application containerized using Docker and deployed on an AWS EC2 instance.
+- Python
+- Flask
+- Docker
+- GitHub Actions
+- AWS EC2
 
-The project implements:
+## Project Structure
 
-- Docker-based application deployment
-- Automated CI/CD pipeline using GitHub Actions
-- Nginx reverse proxy configuration
-- Prometheus monitoring
-- Node Exporter system metrics
-- Grafana dashboards
-
-This project was built and tested as a practical AWS DevOps implementation.
-
----
-
-# 🏗️ Architecture
-
-## Application Deployment Flow
-
-```text
-Developer
-    |
-    | git push
-    v
-GitHub Repository
-    |
-    v
-GitHub Actions
-    |
-    | SSH
-    v
-AWS EC2 (Ubuntu)
-    |
-    v
-Docker Container
-    |
-    v
-Nginx Reverse Proxy
-    |
-    v
-Flask Application
-
-Monitoring Architecture
-AWS EC2
-   |
-   v
-Node Exporter
-   |
-   v
-Prometheus
-   |
-   v
-Grafana Dashboard
-
-🛠️ Technology Stack
-Technology	Purpose
-Python	Application Development
-Flask	Web Framework
-Docker	Containerization
-AWS EC2	Cloud Server
-Ubuntu	Operating System
-Git	Version Control
-GitHub	Source Code Management
-GitHub Actions	CI/CD Automation
-Nginx	Reverse Proxy
-Prometheus	Monitoring
-Node Exporter	System Metrics
-Grafana	Dashboard Visualization
-
-✨ Features
-Application
-Python Flask web application
-
-Employee Management System interface
-
-Dockerized application
-
-Runs on port 5000
-
-DevOps
-Git-based workflow
-
-Docker containerization
-
-Automated CI/CD deployment
-
-AWS EC2 deployment
-
-Nginx reverse proxy
-
-Monitoring
-Prometheus metrics collection
-
-Node Exporter integration
-
-Grafana dashboards
-
-CPU monitoring
-
-Memory monitoring
-
-Disk monitoring
-
-Network monitoring
-
-System uptime monitoring
-
-🔄 CI/CD Pipeline
-GitHub Actions automatically deploys the application whenever changes are pushed to the main branch.
-
-Developer
-    |
-    | git push
-    v
-GitHub Repository
-    |
-    v
-GitHub Actions
-    |
-    +-- Checkout Code
-    |
-    +-- Build Docker Image
-    |
-    +-- Connect to EC2 using SSH
-    |
-    +-- Pull Latest Code
-    |
-    +-- Stop Existing Container
-    |
-    +-- Remove Old Container
-    |
-    +-- Start New Container
-
-🐳 Docker Setup
-Build Image
-docker build -t employee-app .
-
-Run Container
-docker run -d \
--p 5000:5000 \
---name employee-app-container \
-employee-app
-
-Check Container
-docker ps
-
-🌐 Nginx Configuration
-Nginx is used as a reverse proxy between users and the Flask application.
-
-Client
-  |
-  v
-Nginx :80
-  |
-  v
-Flask Application :5000
-
-📈 Monitoring Stack
-Prometheus
-Prometheus collects metrics from EC2 through Node Exporter.
-
-Target:
-
-localhost:9100
-
-Node Exporter
-Collects:
-
-CPU usage
-
-Memory usage
-
-Disk usage
-
-Network traffic
-
-Load average
-
-System uptime
-
-Grafana
-Grafana connects with Prometheus and displays monitoring dashboards.
-
-📁 Project Structure
 employee-devops-project/
-
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
-│
-├── app/
-│   └── app.py
-│
+├── .github/workflows/deploy.yml
+├── app/app.py
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
 
-🚀 Application Setup
-Clone Repository
-git clone https://github.com/shitaldhaval2004/employee-devops-project.git
+## Application
+
+The application provides an Employee Management interface/API
+implemented using Python and Flask.
+
+## Docker
+
+Build the image:
+
+docker build -t employee-app .
+
+Run the application:
+
+docker run -d -p 5000:5000 --name employee-app-container employee-app
+
+The application can then be accessed locally on port 5000.
+
+## CI Workflow
+
+Every push to the `main` branch triggers GitHub Actions.
+
+Workflow:
+
+GitHub Push
+    ↓
+Checkout Code
+    ↓
+Set up Python
+    ↓
+Install Dependencies
+    ↓
+Build Docker Image
+    ↓
+Success
+
+## AWS Deployment
+
+The application was previously deployed to an AWS EC2 instance
+for project demonstration.
+
+The EC2 instance was decommissioned after project completion.
+The current GitHub Actions workflow performs application validation
+and Docker image building without deploying to EC2.
+
+## Current Status
+
+- Source code maintained in GitHub
+- Docker image builds successfully
+- GitHub Actions workflow passes successfully
+- AWS EC2 deployment has been decommissioned after completion
+
+## How to Run Locally
+
+Clone the repository:
+
+git clone <repository-url>
 
 cd employee-devops-project
 
-Install Dependencies
+Install dependencies:
+
 pip install -r requirements.txt
 
-Run Application
+Run the application:
+
 python app/app.py
 
-Application:
+Or run using Docker:
 
-http://localhost:5000
+docker build -t employee-app .
+docker run -d -p 5000:5000 employee-app
 
-🔐 GitHub Actions Secrets
-Sensitive EC2 details are stored securely using GitHub Secrets.
+## Author
 
-Required secrets:
-
-EC2_HOST
-EC2_USERNAME
-EC2_SSH_KEY
-
-🔒 Security Practices
-SSH private keys are not committed to GitHub
-
-Secrets are stored using GitHub Actions Secrets
-
-AWS resources were used only for project implementation and testing
-
-Cloud resources were removed after completion to avoid unnecessary costs
-
-🧪 Deployment Testing
-Deployment flow:
-
-git push
-    |
-    v
-GitHub Actions
-    |
-    v
-Docker Build
-    |
-    v
-Container Updated
-    |
-    v
-Application Updated
-
-📊 Monitoring Verification
-Monitoring flow:
-
-Node Exporter
-      |
-      v
-Prometheus
-      |
-      v
-Grafana
-
-Dashboard metrics:
-
-CPU
-
-Memory
-
-Disk
-
-Network
-
-Load
-
-Uptime
-
-📚 What I Learned
-AWS EC2
-
-Linux Administration
-
-Docker
-
-Git & GitHub
-
-GitHub Actions
-
-CI/CD
-
-SSH Deployment
-
-Nginx
-
-Prometheus
-
-Node Exporter
-
-Grafana
-
-Cloud Resource Management
-
-🎯 Future Improvements
-HTTPS with SSL/TLS
-
-Custom Domain
-
-AWS ECR Integration
-
-Docker Compose
-
-Deployment Health Checks
-
-Automated Rollback
-
-Terraform Infrastructure
-
-Kubernetes Deployment
-
-📌 Project Status
-Completed ✅
-
-The Flask application, Docker deployment, CI/CD pipeline, Nginx configuration, and monitoring stack were successfully implemented and tested.
-
-AWS resources were decommissioned after project completion to avoid unnecessary ongoing cloud costs.
-
-👩‍💻 Author
 Shital Dhaval
-
-GitHub:
-
-https://github.com/shitaldhaval2004/employee-devops-project
-
-⭐ Project Highlights
-Cloud: AWS EC2
-Containerization: Docker
-CI/CD: GitHub Actions
-Web Server: Nginx
-Application: Python Flask
-Monitoring: Prometheus + Node Exporter + Grafana
