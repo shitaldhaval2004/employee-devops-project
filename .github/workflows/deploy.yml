@@ -1,4 +1,4 @@
- name: Build Employee App
+name: Build Employee App
 
 on:
   push:
